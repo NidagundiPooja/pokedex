@@ -11,6 +11,10 @@ const PokemonDetails = (props) => {
     return <div>Loading...</div>;
   }
 
+  const handleEvolution = (id)=>{
+    router.push(`/pokemon/${id}`)
+  }
+
   return (
     <div>
       <h1>{pokemon.name}</h1>
@@ -20,6 +24,7 @@ const PokemonDetails = (props) => {
       <p>Types: {pokemon.types.join(', ')}</p>
       <p>Resistant: {pokemon.resistant.join(', ')}</p>
       <p>Weaknesses: {pokemon.weaknesses.join(', ')}</p>
+      <button onClick={handleEvolution}>evolutions</button>
     </div>
   );
 };
@@ -68,3 +73,6 @@ export async function getServerSideProps(context) {
     }
   }
 }
+
+
+  
