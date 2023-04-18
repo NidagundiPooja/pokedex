@@ -35,7 +35,7 @@ const handleClick = ()=>{
 
 const handleClickCard = (id,name)=>{
     console.log("id-->",id)
-    router.push(`/pokemon/'${id}`,)
+    router.push(`/pokemon/${id}`)
 }
 
 return (
