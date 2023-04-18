@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client'
 
 export const LoadPokemons = gql`
-query{
-    pokemons(first:100){
+query getPokemons($first:Int){
+    pokemons(first:$first){
         image,
         number,
         name,

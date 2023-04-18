@@ -5,7 +5,11 @@ import { LoadPokemons } from '@/GraphQL/Queries'
 const GetPokemons = (props) => {
 
 
-const {error, loading, data} = useQuery(LoadPokemons)
+const {error, loading, data,fetchMore} = useQuery(LoadPokemons,{
+    variables:{
+        first:20
+    }
+})
     
 
 const [pokemons,setPokemons] = useState([])
@@ -15,7 +19,13 @@ useEffect(()=>{
     }
 },[data])
 
-
+const handleClick = ()=>{
+    fetchMore({
+        variables:{
+            first:40
+        }
+    })
+}
 
 
 return (
@@ -29,11 +39,13 @@ return (
                     <h3>{pokemon.number}</h3>
                 <p><strong>{pokemon.name}</strong></p>
                 <p><strong>{pokemon.types}</strong></p>
+
                 </div>
                 </li>
             })
         }
         </ul>
+        <button onClick={handleClick}>Next </button>
     </div>
   )
 }
