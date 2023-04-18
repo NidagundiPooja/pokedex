@@ -1,4 +1,3 @@
-import GetPokemons from "@/Components/GetPokemons";
 import "@/styles/globals.css";
 import {
   ApolloClient,
@@ -26,23 +25,12 @@ export const client = new ApolloClient({
   link: link,
 });
 
-export default function App({ pokemons }) {
+export default function App({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
       <Header/>
-      <GetPokemons />
+      <Component {...pageProps} />
     </ApolloProvider>
   );
-}
-
-export async function getStaticProps(){
-  const res = await GetPokemons()
-  const pokemons = res
-
-  return{
-  props:{
-    pokemons,
-  }
-  }
 }
 

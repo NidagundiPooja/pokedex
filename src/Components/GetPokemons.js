@@ -8,7 +8,7 @@ const GetPokemons = (props) => {
 const [pokemons,setPokemons] = useState([])
 const [count,setCount] = useState(20)
 
-const {error, loading, data,fetchMore} = useQuery(LoadPokemons,{
+const {error, loading, data, fetchMore} = useQuery(LoadPokemons,{
     variables:{
         first:count
     }
