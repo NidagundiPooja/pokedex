@@ -3,13 +3,26 @@ import { useRouter } from 'next/router'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
 const PokemonDetails = (props) => {
-  const router = useRouter()
-  // const pokemonId = router.query && router.query.id
-  console.log("props=====>",props)
+  const { pokemondata } = props;
+  const router = useRouter();
+  const pokemon = pokemondata && pokemondata.pokemon;
+
+  if (!pokemon) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div>Deatils of Pokemon</div>
-  )
-}
+    <div>
+      <h1>{pokemon.name}</h1>
+      <img src={pokemon.image} alt={pokemon.name} />
+      <p>Number: {pokemon.number}</p>
+      <p>Classification: {pokemon.classification}</p>
+      <p>Types: {pokemon.types.join(', ')}</p>
+      <p>Resistant: {pokemon.resistant.join(', ')}</p>
+      <p>Weaknesses: {pokemon.weaknesses.join(', ')}</p>
+    </div>
+  );
+};
 
 export default PokemonDetails
 
