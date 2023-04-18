@@ -21,7 +21,7 @@ const link = from([
   new HttpLink({ uri: "https://graphql-pokemon2.vercel.app/" }),
 ]);
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: link,
 });
