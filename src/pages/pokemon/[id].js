@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
@@ -6,14 +6,19 @@ const PokemonDetails = (props) => {
   const { pokemondata } = props;
   const router = useRouter();
   const pokemon = pokemondata && pokemondata.pokemon;
+  const [ evolutions,setEvolutions] = useState('')
+
+  const handleEvolution = (id)=>{
+    router.push(`/pokemon/${id}`)
+    setEvolutions(id)
+    alert("Id is ",id)
+  }
 
   if (!pokemon) {
     return <div>Loading...</div>;
   }
 
-  const handleEvolution = (id)=>{
-    router.push(`/pokemon/${id}`)
-  }
+ 
 
   return (
     <div>
